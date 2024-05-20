@@ -15,20 +15,19 @@ class BottomNavigationWidget extends StatelessWidget {
     return BlocProvider<RegistrationCubit>.value(
       value: controller,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: BlocBuilder<RegistrationCubit, RegistrationState>(
           builder: (context, state) {
             return Column(
               children: [
-                SizedBox(
-                  height: 50,
-                  child: ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff18447E),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
+              ElevatedButton(
+              
+                     style: ElevatedButton.styleFrom(
+            fixedSize: Size(250, 60),
+                  shape: const StadiumBorder(),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  backgroundColor: Color.fromARGB(255, 2, 9, 110),
+                ),
                     onPressed: () async {
                       try {
                         final credential = await FirebaseAuth.instance
@@ -73,21 +72,18 @@ class BottomNavigationWidget extends StatelessWidget {
                         print(e);
                       }
                     },
-                    icon: const Icon(
-                      Icons.verified_user,
-                      color: Color(0xffF6F5F3),
-                    ),
-                    label: const Text(
+                   
+                    child: const Text(
                       'Sign Up',
                       style: TextStyle(
-                        fontFamily: 'Pacifico',
-                        fontSize: 16.0,
+                      
+                        fontSize: 22,
                         color: Color(0xffF6F5F3),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                ),
+                
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

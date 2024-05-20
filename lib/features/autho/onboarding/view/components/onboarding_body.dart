@@ -33,6 +33,7 @@ class OnboardingBody extends StatelessWidget {
                         const SizedBox(height: 10),
                         Text(
                           controller.data[index].title,
+                          textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontSize: 30,
                             fontFamily: 'Pacifico',
@@ -40,14 +41,15 @@ class OnboardingBody extends StatelessWidget {
                             color: Color(0xff275282),
                           ),
                         ),
-                        const SizedBox(height: 8),
+                      
+                        const SizedBox(height: 12),
                         Center(
                           // Center the subtitle
                           child: Text(
                             controller.data[index].subTitle,
                             textAlign: TextAlign.center, // Align text to center
                             style: const TextStyle(
-                              fontSize: 15,
+                              fontSize: 18,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold,
                               color: Color(0xff1E3137),

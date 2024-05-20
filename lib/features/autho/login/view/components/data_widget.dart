@@ -57,209 +57,243 @@ class dataWidget extends StatelessWidget {
       }
     }
 
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/login.jpg'),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+    return 
+    Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.only(top: 40),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Center(
+            CircleAvatar(
+                  radius: 53,
+                  backgroundColor: Colors.white,
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage('images/logooo.jpeg'),
+                  ),
+                )
+           , Container(
+              
               child: Padding(
-                padding: EdgeInsets.only(left: 120),
-                child: Text(
-                  'PolyVerse',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF144989),
-                    fontFamily: 'Pacifico',
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 30),
-            const Padding(
-              padding: EdgeInsets.only(left: 30),
-              child: Text(
-                'Login',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.normal,
-                  color: Color.fromARGB(255, 42, 41, 44),
-                  fontFamily: 'Pacifico',
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-
-            ///email
-            TextFormField(
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              controller: emailController,
-              keyboardType: TextInputType.emailAddress,
-              validator: PolyVerseValidation().emailValidator,
-              decoration: InputDecoration(
-                labelText: 'Please Enter Your Email',
-                prefixIcon: const Icon(Icons.email),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-            //password
-            TextFormField(
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              controller: passwordController,
-              keyboardType: TextInputType.visiblePassword,
-              validator: PolyVerseValidation().passwordValidator,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Enter Your Password',
-                prefixIcon: const Icon(Icons.lock),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-          CustomButton(
-  text: 'Login',
-  onPressed: () async {
-    try {
-    
-      final credential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: emailController.text,
-              password: passwordController.text);
-
-      if (credential.user != null && credential.user!.emailVerified) {
-        if (emailController.text == 'dinamousttafa@gmail.com' &&
-            passwordController.text == '123456789') {
-          Navigator.push(
-          context,
-          MaterialPageRoute(
-          builder: (context) => NotificationPage(),
-          ),
-        );
-
-        } else {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) {
-            return dashboard();
-          }));
-        }
-      } else {
-        // User is not verified or credentials are incorrect
-        throw FirebaseAuthException(
-          code: 'invalid-credentials',
-          message: 'Invalid email or password.',
-        );
-      }
-    } on FirebaseAuthException catch (e) {
-                  print(context);
-                  if (e.code == e.code) {
-                    log('No user found for that email.');
-                    AwesomeDialog(
-                            context: context,
-                            dialogType: DialogType.error,
-                            animType: AnimType.rightSlide,
-                            title: 'Error',
-                            desc: 'invalid email or password.')
-                        .show();
-                  }
-
-      // Show error message using AwesomeDialog or any other method
-      
-    }
-  },
-),
-
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50),
-              child: Container(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    await signInWithGoogle(context);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    //foregroundColor: Color(0xffF7F7F5),
-                    backgroundColor: Color(0xff4B6EC0),
-                    padding: EdgeInsets.symmetric(vertical: 15),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Login with Google",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.normal,
-                          fontFamily: 'Pacifico',
-                          color: Colors.white,
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 120),
+                        child: Text(
+                          'WEB SERVICE',
+                          style: TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 0, 11, 24),
+                        
+                          ),
                         ),
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Image.asset(
-                        'assets/images/4.png',
-                        width: 30,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "Don't have an account? ",
+                    ),
+                    const SizedBox(height: 30),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 30),
+                      child: Text(
+                        'Login',
                         style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'Pacifico',
+                          fontSize: 30,
                           fontWeight: FontWeight.normal,
                           color: Color.fromARGB(255, 42, 41, 44),
+                          fontFamily: 'Pacifico',
                         ),
                       ),
-                      CustomTextButton(
-                        text: 'Sign Up',
-                        onPressed: () {
-                        Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return RegestrationPage();
-                    }));
-                        },
+                    ),
+                    const SizedBox(height: 20),
+            Column(
+              children: [
+                    ///email
+                    TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      validator: PolyVerseValidation().emailValidator,
+                      decoration: InputDecoration(
+                        labelText: 'Please Enter Your Email',
+                         border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18),
+                        borderSide: BorderSide.none),
+                    fillColor: Colors.purple.withOpacity(0.1),
+                    filled: true,
+                        prefixIcon: const Icon(Icons.email),
                       ),
-                    ],
+                    ),
+            
+                    const SizedBox(height: 20),
+                    //password
+                    TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      controller: passwordController,
+                      keyboardType: TextInputType.visiblePassword,
+                      validator: PolyVerseValidation().passwordValidator,
+                      obscureText: true,
+                      
+                      decoration: InputDecoration(
+                         border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18),
+                        borderSide: BorderSide.none),
+                    fillColor: Colors.purple.withOpacity(0.1),
+                    filled: true,
+                        labelText: 'Enter Your Password',
+                        prefixIcon: const Icon(Icons.lock),
+                      ),
+                    ),
+            
+                    const SizedBox(height: 50),
+                  ElevatedButton(
+             child: const Text(
+                  "Login",
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+               style: ElevatedButton.styleFrom(
+            fixedSize: Size(250, 60),
+                  shape: const StadiumBorder(),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  backgroundColor: Color.fromARGB(255, 2, 9, 110),
+                ),
+              onPressed: () async {
+            try {
+            
+              final credential = await FirebaseAuth.instance
+                  .signInWithEmailAndPassword(
+                      email: emailController.text,
+                      password: passwordController.text);
+            
+              if (credential.user != null && credential.user!.emailVerified) {
+                if (emailController.text == 'amged334422@gmail.com' &&
+                    passwordController.text == '123456789') {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                  builder: (context) => NotificationPage(),
                   ),
-                  const SizedBox(height: 20),
-                  CustomTextButton(
-                    text: 'Forgot password.',
-                    onPressed: () {
-                      // Navigate toforget page
-
-                        Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return forget_pw();
-                    }));
-                    },
-                  ),
-                ],
+                );
+            
+                } else {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                    return dashboard();
+                  }));
+                }
+              } else {
+                // User is not verified or credentials are incorrect
+                throw FirebaseAuthException(
+                  code: 'invalid-credentials',
+                  message: 'Invalid email or password.',
+                );
+              }
+            } on FirebaseAuthException catch (e) {
+                          print(context);
+                          if (e.code == e.code) {
+                            log('No user found for that email.');
+                            AwesomeDialog(
+                                    context: context,
+                                    dialogType: DialogType.error,
+                                    animType: AnimType.rightSlide,
+                                    title: 'Error',
+                                    desc: 'invalid email or password.')
+                                .show();
+                          }
+            
+              // Show error message using AwesomeDialog or any other method
+              
+            }
+              },
+            ),
+            ],
+            ),
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
+                      child: Container(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            await signInWithGoogle(context);
+                          },
+                          
+               style: ElevatedButton.styleFrom(
+            fixedSize: Size(250, 60),
+                  shape: const StadiumBorder(),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  backgroundColor: Color.fromARGB(255, 2, 9, 110),
+                ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Login with Google",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.normal,
+                                 
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Image.asset(
+                                'assets/images/4.png',
+                                width: 30,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "Don't have an account? ",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: 'Pacifico',
+                                  fontWeight: FontWeight.normal,
+                                  color: Color.fromARGB(255, 42, 41, 44),
+                                ),
+                              ),
+                              CustomTextButton(
+                                text: 'Sign Up',
+                                onPressed: () {
+                                Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return RegestrationPage();
+                            }));
+                                },
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          CustomTextButton(
+                            text: 'Forgot password.',
+                            onPressed: () {
+                              // Navigate toforget page
+            
+                                Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return forget_pw();
+                            }));
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
