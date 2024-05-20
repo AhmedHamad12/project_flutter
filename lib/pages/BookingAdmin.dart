@@ -1,62 +1,25 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:project/features/autho/login/view/page/login.dart';
-import 'package:project/pages/BookingAdmin.dart';
-import 'package:project/pages/dashboard.dart';
-import 'package:project/pages/homePage.dart';
+import 'dart:html';
 
-class NotificationPage extends StatefulWidget {
-  NotificationPage({Key? key}) : super(key: key);
+import 'package:project/pages/notificationpage.dart';
+
+class BookingAdmin extends StatefulWidget {
+  const BookingAdmin({Key? key}) : super(key: key);
 
   @override
-  State<NotificationPage> createState() => _NotificationPageState();
+  State<BookingAdmin> createState() => _BookingPageState();
 }
 
-class _NotificationPageState extends State<NotificationPage> {
-  TextEditingController serviceName = TextEditingController();
-
-  TextEditingController description = TextEditingController();
+class _BookingPageState extends State<BookingAdmin> {
   final List<QueryDocumentSnapshot> data = [];
 
   Future<void> getData() async {
     QuerySnapshot querySnapshot =
-        await FirebaseFirestore.instance.collection("requestservice").get();
+        await FirebaseFirestore.instance.collection("Booking").get();
     setState(() {
       data.addAll(querySnapshot.docs);
     });
-  }
-
-  Future<void> deleteDocument(String documentId) async {
-    try {
-      await FirebaseFirestore.instance
-          .collection("requestservice")
-          .doc(documentId)
-          .delete();
-
-      setState(() {
-        data.removeWhere((item) => item.id == documentId);
-      });
-      print("Document deleted successfully!");
-    } catch (e) {
-      print("Error deleting document: $e");
-    }
-  }
-
-  Future<void> addToBoking(int index) async {
-    CollectionReference service =
-        FirebaseFirestore.instance.collection('Booking');
-
-    try {
-      await service.add({
-        'servicename': data[index]["servicename"],
-        'description': data[index]["description"]
-      });
-      print("Service Added");
-    } catch (error) {
-      print("Failed to add service: $error");
-    }
   }
 
   @override
@@ -70,40 +33,39 @@ class _NotificationPageState extends State<NotificationPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Color(0xFF345069) ,
         appBar: AppBar(
           actions: [
-            IconButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return loginPage();
-                  }));
-                },
-                icon: Icon(Icons.arrow_back)),
+             
                 IconButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return BookingAdmin();
+                    return NotificationPage();
                   }));
                 },
-                icon: Icon(Icons.note)),
+                icon: Icon(Icons.notifications_active, color: Colors.white,)),
+                
           ],
-          title: const Text(
-            'Notification',
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
+          backgroundColor: Color(0xFF345069),
+          title: Center(
+            child: const Text(
+              'Bookings',
+              style: TextStyle(
+                fontSize: 25,color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
         body: ListView.builder(
           itemCount: data.length,
-          itemBuilder: (BuildContext context, index) {
+          itemBuilder: (BuildContext context, int index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Container(
                 height: 220,
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
+                  color: Color.fromARGB(255, 181, 185, 185).withOpacity(0.8),
                   boxShadow: [
                     BoxShadow(
                       blurRadius: 3,
@@ -134,7 +96,7 @@ class _NotificationPageState extends State<NotificationPage> {
                           ),
                         ),
                         child: const Icon(
-                          Icons.notification_add,
+                          Icons.bookmark,
                           color: Colors.white,
                           size: 25,
                         ),
@@ -148,7 +110,7 @@ class _NotificationPageState extends State<NotificationPage> {
                               const Padding(
                                 padding: EdgeInsets.only(bottom: 10),
                                 child: Text(
-                                  'New Notification',
+                                  'New Booking',
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -197,54 +159,12 @@ class _NotificationPageState extends State<NotificationPage> {
                               ),
                               const SizedBox(height: 8),
                               const Text(
-                                'Poly verse',
+                                'Booking App',
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Colors.grey,
                                 ),
                               ),
-                              const Spacer(
-                                flex: 1,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    height: 40,
-                                    width: 100,
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.green),
-                                      onPressed: () async {
-                                        await addToBoking(index);
-                                        deleteDocument(data[index].id);
-                                      },
-                                      child: const Text(
-                                        "Accept",
-                                        style: TextStyle(
-                                            fontSize: 16, color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 100,
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.red),
-                                      onPressed: () {
-                                        deleteDocument(data[index].id);
-                                      },
-                                      child: const Text(
-                                        "Reject",
-                                        style: TextStyle(
-                                            fontSize: 16, color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )
                             ],
                           ),
                         ),
