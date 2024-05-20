@@ -18,15 +18,18 @@ class DataWidget extends StatelessWidget {
             return Form(
               key: controller.formKey,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Text(
-                    "Create Account",
-                    style: TextStyle(
-                       color: Color(0xff18447E),
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Pacifico'),
+                  Padding(
+                    padding: const EdgeInsets.only(top:20),
+                    child: const Text(
+                      "Create Account",
+                      style: TextStyle(
+                         color: Color.fromARGB(255, 0, 2, 5),
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
+                    ),
                   ),
                   const Text(
                     "Enter Details To Get Started",
@@ -42,7 +45,13 @@ class DataWidget extends StatelessWidget {
                     controller: controller.firstNameController,
                     keyboardType: TextInputType.name,
                     validator: PolyVerseValidation().nameValidate,
-                    decoration: decoration.copyWith(
+                   decoration: InputDecoration(
+                     
+                         border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18),
+                        borderSide: BorderSide.none),
+                    fillColor: Colors.purple.withOpacity(0.1),
+                    filled: true,
                       prefixIcon:
                           const Icon(Icons.supervised_user_circle_outlined),
                       labelText: 'User Name',
@@ -53,11 +62,18 @@ class DataWidget extends StatelessWidget {
                   ),
                   //email form
                   TextFormField(
+                    
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: controller.mailController,
                     keyboardType: TextInputType.emailAddress,
                     validator: PolyVerseValidation().emailValidator,
-                    decoration: decoration.copyWith(
+                   decoration: InputDecoration(
+                       
+                         border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18),
+                        borderSide: BorderSide.none),
+                    fillColor: Colors.purple.withOpacity(0.1),
+                    filled: true,
                       labelText: 'Email Address',
                       hintText: '*******@gmail.com',
                     ),
@@ -72,7 +88,13 @@ class DataWidget extends StatelessWidget {
                     keyboardType: TextInputType.visiblePassword,
                     validator: PolyVerseValidation().passwordValidator,
                     obscureText: true,
-                    decoration: decoration.copyWith(
+                   decoration: InputDecoration(
+                       
+                         border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18),
+                        borderSide: BorderSide.none),
+                    fillColor: Colors.purple.withOpacity(0.1),
+                    filled: true,
                       labelText: 'Password',
                       prefixIcon: const Icon(Icons.lock),
                     ),
@@ -92,7 +114,13 @@ class DataWidget extends StatelessWidget {
                       );
                     },
                     obscureText: true,
-                    decoration: decoration.copyWith(
+                   decoration: InputDecoration(
+                        
+                         border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18),
+                        borderSide: BorderSide.none),
+                    fillColor: Colors.purple.withOpacity(0.1),
+                    filled: true,
                       labelText: 'Confirm Password',
                       prefixIcon: const Icon(Icons.password),
                     ),

@@ -22,7 +22,6 @@ class PolyVerseValidation {
     return null;
   }
 
-  //pass
   String? passwordValidator(String? value) {
     if (value!.isEmpty) {
       return 'Please enter a password';

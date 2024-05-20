@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project/features/autho/registration/controller/registration_cubit.dart';
 import 'package:project/features/autho/registration/view/components/bottom_widget.dart';
@@ -14,26 +15,41 @@ class RegestrationPage extends StatelessWidget {
         builder: (context, state) {
           RegistrationCubit controller = context.read<RegistrationCubit>();
           return Scaffold(
+            
             body: Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/registation.jpg"),
-                  fit: BoxFit.fill,
-                ),
-              ),
-              child: DataWidget(
-                controller: controller,
-              ),
-            ),
-            bottomNavigationBar: SizedBox(
-              height: 100,
+             color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 40),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: CircleAvatar(
+                                      radius: 53,
+                                      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+                                      child: CircleAvatar(
+                      radius: 50,
+                      backgroundImage: AssetImage('images/logo.jpeg'),
+                                      ),
+                                    ),
+                    ),
+                    DataWidget(
+                      controller: controller,
+                    ),
+                 SizedBox(height: 40,)
+           , Container(
+              
               child: BottomNavigationWidget(
                 controller: controller,
               ),
             ),
-            extendBodyBehindAppBar: true,
-            extendBody: true,
-            backgroundColor: Colors.transparent,
+           
+           
+           
+             ],
+                ),
+              ),
+            ),
           );
         },
       ),

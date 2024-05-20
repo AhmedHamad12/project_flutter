@@ -10,12 +10,7 @@ class loginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/login.jpg"),
-            fit: BoxFit.fill,
-          ),
-        ),
+       
         child: dataWidget()
       ),
       extendBodyBehindAppBar: true,

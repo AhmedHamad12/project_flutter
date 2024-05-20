@@ -30,17 +30,17 @@ class OnboardingControllerCubit extends Cubit<OnboardingControllerState> {
 
   List data = [
     OnboardingModel(
-        image: 'assets/images/11.jpg',
-        title: ' Embark on your PolyVerse Journey',
+        image: 'assets/images/shaking.jpeg',
+        title: ' Get Ready With Your Service Journey',
         subTitle:
-            " Explore a universe of possibilities with PolyVerse, your all-in-one platform for web applications, mobile apps, and games. Whether you're a developer, gamer or entrepreneur, PolyVerse has something for you."),
+            " Explore a Universe Of Possibilities With SERVICE , your all-in-one platform for web applications, mobile apps, and games. Whether you're a developer, gamer or entrepreneur, PolyVerse has something for you."),
     OnboardingModel(
-        image: 'assets/images/boarding1.jpg',
+        image: 'assets/images/shaking.jpeg',
         title: 'Discover New Horizons',
         subTitle:
             "Dive into a world of creativity and innovation. Discover a diverse range of web applications, mobile apps, and games tailored to your interests. With PolyVerse, the possibilities are endless."),
     OnboardingModel(
-        image: 'assets/images/onbarding3.jpg',
+        image: 'assets/images/shaking.jpeg',
         title: 'Connect and Thrive',
         subTitle:
             "Join a vibrant community of creators and enthusiasts. Connect with like-minded individuals, collaborate on projects, and share your passion for technology and gaming. With PolyVerse, you're part of something bigger."),
