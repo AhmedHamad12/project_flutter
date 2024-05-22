@@ -167,8 +167,8 @@ class dataWidget extends StatelessWidget {
                       password: passwordController.text);
             
               if (credential.user != null && credential.user!.emailVerified) {
-                if (emailController.text == 'amged334422@gmail.com' &&
-                    passwordController.text == '123123') {
+                if (emailController.text == 'ahmedhamad9855@gmail.com' &&
+                    passwordController.text == 'ahmed1234') {
                   Navigator.push(
                   context,
                   MaterialPageRoute(
