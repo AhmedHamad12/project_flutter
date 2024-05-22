@@ -28,6 +28,7 @@ class BottomNavigationWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   backgroundColor: Color.fromARGB(255, 2, 9, 110),
                 ),
+                //firebase method to sign account
                     onPressed: () async {
                       try {
                         final credential = await FirebaseAuth.instance

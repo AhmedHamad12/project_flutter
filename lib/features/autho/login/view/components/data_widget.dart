@@ -136,7 +136,7 @@ class dataWidget extends StatelessWidget {
                       obscureText: true,
                       
                       decoration: InputDecoration(
-                         border: OutlineInputBorder(
+                        border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(18),
                         borderSide: BorderSide.none),
                     fillColor: Colors.purple.withOpacity(0.1),
@@ -219,7 +219,7 @@ class dataWidget extends StatelessWidget {
                             await signInWithGoogle(context);
                           },
                           
-               style: ElevatedButton.styleFrom(
+              style: ElevatedButton.styleFrom(
             fixedSize: Size(250, 60),
                   shape: const StadiumBorder(),
                   padding: const EdgeInsets.symmetric(vertical: 16),

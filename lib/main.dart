@@ -1,8 +1,9 @@
-
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:project/core/cubit/parent_cubit.dart';
 import 'package:project/core/utilis/my_routes.dart';
+import 'package:project/core/utilis/my_theme.dart';
 import 'package:project/features/autho/splash/view/page/splash.dart';
 import 'package:project/firebase_options.dart';
 
@@ -17,6 +18,9 @@ void main() async {
     DevicePreview(
       enabled: true,
       builder: (context) => MaterialApp(
+       // theme: MyTheme.Instance.light,
+         //       darkTheme: MyTheme.Instance.dark,
+           //     themeMode: ParentCubit.instance.themeMode,
         home: Splash(), // Show Splash screen initially
         builder: DevicePreview.appBuilder,
         useInheritedMediaQuery: true,
